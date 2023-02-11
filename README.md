@@ -1,9 +1,9 @@
 # Emotion_Detection_CNN
 
-##Node.js 18 is required 
+## Node.js 18 is required 
 https://nodejs.org/en/download/
 
-##npm 8 is required to run
+## npm 8 is required to run
 https://www.npmjs.com/package/npm/v/8.5.0
 
 Once you have both installed, navigate to the ../Website folder and open a command line window there.
