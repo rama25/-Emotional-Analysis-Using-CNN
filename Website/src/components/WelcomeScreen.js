@@ -19,9 +19,9 @@ function WelcomeScreen() {
     <h2>Approach</h2>
     Our objective is to develop a program that identifies emotion in real-time video captured through a webcam. We will use an open-source data set to train a deep learning model.  The model uses a cascaded classifier to detect faces in the video frames. The grayscale face region is then passed through the trained model which classifies facial expressions as anger, disgust, fear, happiness, sadness, surprise, or neutral.  
 
-    <h2>Milestones</h2>
-    <ul>
-        <li> <b>Data collection and data assessment.</b> Since this project will use an open-source data set, data preparation will not be needed. However, it is essential to assess the quality of the images in the data set. We are looking for a data set with about 3,000 images in each class that considers different ethnicities across emotion categories.</li>
+		<h2>Milestones</h2>
+		<ul>
+			<li> <p><b>Data collection and data assessment.</b> Since this project will use an open-source data set, data preparation will not be needed. However, it is essential to assess the quality of the images in the data set. We are looking for a data set with about 3,000 images in each class that considers different ethnicities across emotion categories.</p> </li>
 
         <li><b>Program development.</b> For this project, we will develop a python code that uses OpenCV, Keras, and TensorFlow libraries to perform real-time facial emotion recognition. It uses a pre-trained deep learning model to predict a person's emotion based on their facial expression captured by a webcam.</li>
         
