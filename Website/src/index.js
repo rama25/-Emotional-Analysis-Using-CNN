@@ -8,6 +8,7 @@ import ImplementationScreen from './components/ImplementationScreen';
 import ResultsScreen from './components/ResultsScreen';
 import StreamScreen from './components/StreamScreen';
 import WelcomeScreen from './components/WelcomeScreen';
+import ProjectProposal from './components/ProjectProposal';
 import Navigator from './components/Navigator';
 import Col from 'react-bootstrap/Col';
 import { Container, Row } from 'react-bootstrap';
@@ -22,6 +23,7 @@ root.render(
         </Col>
         <Col>
           <WelcomeScreen />
+          <ProjectProposal/>
           <ImplementationScreen />
           <StreamScreen />
           <ResultsScreen />
