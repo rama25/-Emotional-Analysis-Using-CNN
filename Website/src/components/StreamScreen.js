@@ -14,7 +14,7 @@ function StreamScreen() {
 
     return (
         <Container className='myContainer' id='StreamContainer'>
-            <h1>Stream</h1>
+            <h1 className='blue'>Stream</h1>
             <Row>
                 <Col>
                     <video className='borderClass' id="video" width="640" height="480" autoPlay

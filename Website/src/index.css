@@ -24,6 +24,8 @@ p {
 
 h2 {
 	text-align: left;
+	border-bottom: solid;
+	border-bottom-width: 2px
 }
 
 h3 {
@@ -38,10 +40,40 @@ ul {
 	text-align: right;
 }
 
+.pink {
+	background-color: #DD00FF;
+}
+
+.green {
+	background-color: #007F46;
+}
+
+.blue {
+	background-color: #0026FF;
+}
+
+.purple {
+	background-color: #4800FF;
+}
+
+.orange {
+	background-color: #C14D00;
+}
+
+h1 {
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+		color: white;
+		padding-bottom: 5px;
+		border-color: black;
+		border-style: solid;
+		border-width: 0px 1px 1px 1px;
+  }
+
 .myContainer {
   background-color: white;
   border: 1px solid black;
-  margin: 5px;
+  margin: 10px;
   border-radius: 10px;
   box-shadow: 10px 10px 50px darkgray;
 }

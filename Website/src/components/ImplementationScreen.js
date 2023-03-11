@@ -7,7 +7,7 @@ function ImplementationScreen() {
 
     return (
         <Container className='myContainer' id='ImplementationContainer'>
-            <h1>Implementation</h1>
+            <h1 className='purple'>Implementation</h1>
             <p>Our implementation was great because...</p>
         </Container>
 

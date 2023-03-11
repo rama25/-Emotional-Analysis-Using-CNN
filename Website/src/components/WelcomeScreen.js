@@ -8,7 +8,7 @@ function WelcomeScreen() {
     return (
 
     <Container className='myContainer' id='WelcomeContainer'>
-		<h1>Welcome to our website</h1>
+		<h1 className='green'>Welcome to our website</h1>
 		<h2>Meet the team:</h2>
 		<div>
 			<h3>Maria Elisa Montes Gonzalez</h3>

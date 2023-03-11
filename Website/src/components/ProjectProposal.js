@@ -6,8 +6,8 @@ function ProjectProposal() {
 
     return (
 
-    <Container className='myContainer' id='PPContainer'>
-		<h1>Project proposal</h1>
+    <Container className='myContainer pinkContainer' id='PPContainer'>
+		<h1 className='pink'>Project proposal</h1>
 		<h2>Problem</h2>
 		<p>
 		Emotion recognition systems identify features in verbal and non-verbal communication to identify and quantify the emotions expressed, enabling computers and product developers to adapt to the user's emotional state (<a className = 'cite' href="#fragopanagos_2005">Fragopanagos & Taylor, 2005</a>; <a className = 'cite'href="#zhao_2020">Zhao et al., 2020</a>). Data on users' emotional reactions when interacting with online applications is valuable for a wide range of fields education, healthcare, customer service, and entertainment (<a className = 'cite' href="#fragopanagos_2005">Fragopanagos & Taylor, 2005</a>). The main signals in emotion analysis are facial expressions, speech, arm gestures, language, and physiological patterns (<a className = 'cite' href="#zhao_2020">Zhao et al., 2020</a>). Emotion recognition from facial expressions involves computer vision, machine learning, and deep learning algorithms. In the context of online applications, the output must be accurate, real-time, and computationally efficient (<a className = 'cite' href="#hossain_2017">Hossain & Muhammad, 2017</a>). Models that analyze images or complete video sequences do not provide an immediate output, therefore, are not suitable for online applications (<a className = 'cite' href="#hossain_2017">Hossain & Muhammad, 2017</a>). Although different frameworks have been proposed, identifying emotions from facial expressions commonly involves face detection, feature extraction, and facial expression classification. In the case of video, dynamic features are extracted using temporal segmentation (<a className = 'cite' href="#suk_2014">Suk & Prabhakaran, 2014</a>).
