@@ -22,6 +22,18 @@ p {
   text-align: left;
 }
 
+h2 {
+	text-align: left;
+}
+
+ul {
+	text-align: left;
+}
+
+.rightAlign {
+	text-align: right;
+}
+
 .myContainer {
   background-color: white;
   border: 1px solid black;

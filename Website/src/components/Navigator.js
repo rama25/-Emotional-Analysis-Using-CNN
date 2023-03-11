@@ -7,7 +7,7 @@ function Navigator() {
 
     return (
         <Container className='navigatorContainer myContainer' fluid="false">
-			<img src={uwLogo} alt="UW logo" class="myImage"></img>
+			<img src={uwLogo} alt="UW logo" className="myImage"></img>
             <h4><a href="#WelcomeContainer">Welcome</a></h4>
             <h4><a href="#PPContainer">Project Proposal</a></h4>
             <h4><a href="#ImplementationContainer">Implementation</a></h4>

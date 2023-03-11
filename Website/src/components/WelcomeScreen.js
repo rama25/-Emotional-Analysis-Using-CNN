@@ -8,13 +8,11 @@ function WelcomeScreen() {
     return (
 
     <Container className='myContainer' id='WelcomeContainer'>
-    <h1>Welcome to our website</h1>
-    <p>
-    <h2>Meet the team:</h2>
-     We can may be add our pictures and small intro :)
-    </p>
-    
-    
+		<h1>Welcome to our website</h1>
+		<h2>Meet the team:</h2>
+		<p>
+		 We can may be add our pictures and small intro :)
+		</p>
     </Container>
 
     );
