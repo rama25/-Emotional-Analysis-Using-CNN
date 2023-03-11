@@ -11,7 +11,7 @@ function WelcomeScreen() {
 		<h1>Welcome to our website</h1>
 		<h2>Meet the team:</h2>
 		<div>
-			<h3>Ramapriya Ranganath</h3>
+			<h3>Maria Elisa Montes Gonzalez</h3>
 			<div className="welcomeSection">
 				<p>
 				 We can may be add our pictures and small intro :)
@@ -19,7 +19,7 @@ function WelcomeScreen() {
 			</div>
 		</div>
 		<div>
-			<h3>Maria Elisa Montes Gonzalez</h3>
+			<h3>Ramapriya Ranganath</h3>
 			<div className="welcomeSection">
 				<p>
 				 We can may be add our pictures and small intro :)
