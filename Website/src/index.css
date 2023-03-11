@@ -59,6 +59,9 @@ table tr, td{
 }
 
 .myImage {
+	width: 100%;
 	width: -webkit-fill-available;
+    width: -moz-available;
+	width: stretch;
 }
 
