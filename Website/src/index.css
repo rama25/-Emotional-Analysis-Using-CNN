@@ -2,6 +2,11 @@ html {
   margin: 1rem;
   align-items: center;
   text-align: center;
+  background-color: #D3F4FF;
+}
+
+#root {
+  background-color: #D3F4FF;
 }
 
 body {
@@ -75,7 +80,7 @@ h1 {
   border: 1px solid black;
   margin: 10px;
   border-radius: 10px;
-  box-shadow: 10px 10px 50px darkgray;
+  box-shadow: 5px 5px 20px gray;
 }
 
 .navigatorContainer {
