@@ -26,6 +26,10 @@ h2 {
 	text-align: left;
 }
 
+h3 {
+	text-align: left;
+}
+
 ul {
 	text-align: left;
 }
@@ -70,7 +74,18 @@ table tr, td{
   padding-right: 15px;
 }
 
-.myImage {
+.welcomeImage {
+	width: 200px;
+	margin: 0px 10px 10px 0px;
+	border-radius: 5%;
+}
+
+.welcomeSection {
+	display: flex;
+	padding: 5px;
+}
+
+.navImage {
 	width: 100%;
 	width: -webkit-fill-available;
     width: -moz-available;

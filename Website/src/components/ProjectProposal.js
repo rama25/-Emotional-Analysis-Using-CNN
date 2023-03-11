@@ -40,7 +40,7 @@ function ProjectProposal() {
 				<tr>
 					<td>Deliverables</td>
 					<td>Project proposal</td>
-					<td className="rightAlign">2/19/2023 </td>
+					<td className="rightAlign">2/19/2023</td>
 				</tr>
 				<tr>
 					<td></td>
