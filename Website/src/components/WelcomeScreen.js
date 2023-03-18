@@ -31,7 +31,7 @@ function WelcomeScreen() {
 			<div className="welcomeSection">
 			<img src={mariaPic} alt="Picture of Maria" className="welcomeImage"></img>
 				<p>
-				 Hi my name is Maria, I am originally form center Mexico. I came to Madison last January to start a PhD. in animal science focusing on precision livestock farming. 
+				 Hi my name is Maria. I grew uo in Guanajuato, Mexico where  I got my bachelors in Agronomy Engineering. Last January I came to Madison to start a PhD. in Animal Sciences focusing on precision livestock farming, specifically with dairy cows. In my free time I dance ballet and train gymnatics.
 				</p>
 			</div>
 		</div>

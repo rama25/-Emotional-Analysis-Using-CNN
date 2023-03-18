@@ -10,15 +10,16 @@ function ProjectProposal() {
 		<h1 className='pink'>Project proposal</h1>
 		<h2>Problem</h2>
 		<p>
-		Emotion recognition systems identify features in verbal and non-verbal communication to identify and quantify the emotions expressed, enabling computers and product developers to adapt to the user's emotional state (<a className = 'cite' href="#fragopanagos_2005">Fragopanagos & Taylor, 2005</a>; <a className = 'cite'href="#zhao_2020">Zhao et al., 2020</a>). Data on users' emotional reactions when interacting with online applications is valuable for a wide range of fields education, healthcare, customer service, and entertainment (<a className = 'cite' href="#fragopanagos_2005">Fragopanagos & Taylor, 2005</a>). The main signals in emotion analysis are facial expressions, speech, arm gestures, language, and physiological patterns (<a className = 'cite' href="#zhao_2020">Zhao et al., 2020</a>). Emotion recognition from facial expressions involves computer vision, machine learning, and deep learning algorithms. In the context of online applications, the output must be accurate, real-time, and computationally efficient (<a className = 'cite' href="#hossain_2017">Hossain & Muhammad, 2017</a>). Models that analyze images or complete video sequences do not provide an immediate output, therefore, are not suitable for online applications (<a className = 'cite' href="#hossain_2017">Hossain & Muhammad, 2017</a>). Although different frameworks have been proposed, identifying emotions from facial expressions commonly involves face detection, feature extraction, and facial expression classification. In the case of video, dynamic features are extracted using temporal segmentation (<a className = 'cite' href="#suk_2014">Suk & Prabhakaran, 2014</a>).
+		Emotion recognition systems identify features in verbal and non-verbal communication to identify and quantify the emotions expressed (<a className = 'cite' href="#fragopanagos_2005">Fragopanagos & Taylor, 2005</a>; <a className = 'cite'href="#zhao_2020">Zhao et al., 2020</a>). Data on users' emotional reactions when interacting with online applications is valuable for a wide range of fields education, healthcare, customer service, entertainment (<a className = 'cite' href="#fragopanagos_2005">Fragopanagos & Taylor, 2005</a>), and criminology (<a className = 'cite' href= "podolez_2022">Podoletz, 2022</a>). The main signals in emotion analysis are facial expressions, speech, arm gestures, language, and physiological patterns (<a className = 'cite' href="#zhao_2020">Zhao et al., 2020</a>). Emotion recognition from facial expressions involves computer vision, machine learning, and deep learning algorithms. In the context of online applications, the output must be accurate, real-time, and computationally efficient (<a className = 'cite' href="#hossain_2017">Hossain & Muhammad, 2017</a>). Models that analyze images or complete video sequences do not provide an immediate output, therefore, are not suitable for online applications (<a className = 'cite' href="#hossain_2017">Hossain & Muhammad, 2017</a>). Although different frameworks have been proposed, identifying emotions from facial expressions commonly involves face detection, feature extraction, and facial expression classification. In the case of video, dynamic features are extracted using temporal segmentation (<a className = 'cite' href="#suk_2014">Suk & Prabhakaran, 2014</a>).  
+	
 		</p>
 		<h2>Motivation</h2>
 		<p>
-		Automated customer service (<a className = 'cite' href = "#zendesk_2022">Zendesk, 2022</a>), hybrid work (<a className = 'cite' href = "#accenture_2021">Accenture, 2021</a>), and distance learning <a className = 'cite' href = "#venable_2022">(Venable, 2022)</a> are becoming more common, raising the need for natural and personalized interactions with computers. Data on emotional responses is essential to provide customized responses and improve online tools. Because this project will be presented in a web format, we were motivated to focus on emotion analysis for online applications. Our goal is that instructors and anyone that visits our website can interact with our project.
+		Automated customer service (<a className = 'cite' href = "#zendesk_2022">Zendesk, 2022</a>), hybrid work (<a className = 'cite' href = "#accenture_2021">Accenture, 2021</a>), and distance learning <a className = 'cite' href = "#venable_2022">(Venable, 2022)</a> are becoming more common, raising the need for natural and personalized interactions with computers. Not only is emotional analysis essential for human-computer interaction but it is also essential for the study of human behavior.  In the gaming industry where, they need real time feedback during the beta testing phase, the company can use our tool to detect the emotions depicted by the testers to get an overall quality of the game. Facial emotion recognition can also be implemented in video from CCTV cameras, providing valuable data for crime prevention and investigation. Because this project will be presented in a web format, we were motivated to focus on emotion analysis for online applications. Our goal is that instructors and anyone that visits our website can interact with our project. 
 		</p>
 		<h2>Approach</h2>
 		<p>
-		Our objective is to develop a program that identifies emotion in real-time video captured through a webcam. We will use an open-source data set to train a deep learning model.  The model uses a cascaded classifier to detect faces in the video frames. The grayscale face region is then passed through the trained model which classifies facial expressions as anger, disgust, fear, happiness, sadness, surprise, or neutral.  
+		Our objective is to develop a program that identifies emotion in real-time video captured through a webcam. We will use an open-source data set to train a deep learning model.  The model uses a cascaded classifier to detect faces in the video frames. The grayscale face region is then passed through the trained model, which classifies facial expressions as anger, disgust, fear, happiness, sadness, surprise, or neutral. This is an already existing framework for emotion recognition which will allow us to compare the performance and accuracy of our implementation with previous work. We will also consider the application of real-time emotion recognition for crime prevention and incorporating object detection. Object detection will not only ensure that emotions are only assigned to persons but also be used for future correlations between objects and emotional states. 
 		</p>
 		<h2>Milestones</h2>
 		<ul>
@@ -27,6 +28,8 @@ function ProjectProposal() {
 			<li><b>Program development.</b> For this project, we will develop a python code that uses OpenCV, Keras, and TensorFlow libraries to perform real-time facial emotion recognition. It uses a pre-trained deep learning model to predict a person's emotion based on their facial expression captured by a webcam.</li>
 			
 			<li><b>Website and model integration.</b> will create a website using React. This website will run an emotion recognition program. The site will request permission to open the webcam. Once the webcam is activated, the video will be displayed on the screen, and a frame indicating the user's emotion will be displayed around the face. Readme instructions on the web page will make it crystal clear to run the code.</li>
+
+			<li><b>Beta testing</b> after completing the requirements for the course project. The team plans to test the program on a practical application and receive feedback from authorities in the field.</li>
 		</ul>
 	
 		<h2>Timetable</h2>
@@ -87,11 +90,7 @@ function ProjectProposal() {
 					<td>Site creation</td>
 					<td className="rightAlign">2/19/2023</td>
 				</tr>
-				<tr>
-					<td></td>
-					<td>Hosting</td>
-					<td className="rightAlign">2/19/2023</td>
-				</tr>
+				
 				<tr>
 					<td></td>
 					<td>Content creation</td>
@@ -101,6 +100,11 @@ function ProjectProposal() {
 					<td></td>
 					<td>Model integration</td>
 					<td className="rightAlign">3/02/2023</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>Hosting</td>
+					<td className="rightAlign">4/22/2023</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -122,6 +126,8 @@ function ProjectProposal() {
 			
 		<li id = "hossain_2017">Hossain, M. S., & Muhammad, G. (2017). An emotion recognition system for mobile applications. IEEE Access (5), 2281-2287. <a href="https://ieeexplore.ieee.org/document/7862118"> https://ieeexplore.ieee.org/document/7862118 </a></li>
 		
+		<li id = "podoletz_2022">Podoletz, L. (2022). We have to talk about emotional AI and crime. AI & Society. <a href='https://doi.org/10.1007/s00146-022-01435-w'>https://doi.org/10.1007/s00146-022-01435-w</a>  
+		</li>
 		<li id = "suk_0214"> Suk, M., & Prabhakaran, B. (2014). Real-Time Mobile Facial Expression Recognition System -- A Case Study. 2014 IEEE Conference on Computer Vision and Pattern Recognition Workshops. <a href = "https://doi:10.1109/cvprw.2014.25">https://doi:10.1109/cvprw.2014.25</a></li>
 	
 		<li id = "venable_2022"> Venable, M. A. (2022). 2022 Online Education Trends Report. BestColleges.com <a href='https://www.bestcolleges.com/research/annual-trends-in-online-education/'>https://www.bestcolleges.com/research/annual-trends-in-online-education/</a></li>
