@@ -122,6 +122,11 @@ table tr, td{
 	padding: 5px;
 }
 
+.imageCaption {
+	text-align: center;
+	font-style: italic;
+}
+
 .navImage {
 	width: 100%;
 	width: -webkit-fill-available;

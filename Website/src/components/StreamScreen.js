@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 
 function StreamScreen() {
@@ -17,10 +19,14 @@ function StreamScreen() {
             <h1 className='blue'>Stream</h1>
             <Row>
                 <Col>
-                    <video className='borderClass' id="video" width="640" height="480" autoPlay
+					<Zoom>
+						<video className='borderClass' id="video" width="640" height="480" autoPlay
                         ref={video}></video>
-                    <canvas className='borderClass' id="canvas" width="640" height="480"
+					</Zoom>
+					<Zoom>
+						<canvas className='borderClass' id="canvas" width="640" height="480"
                         ref={canvas}></canvas>
+					</Zoom>
                 </Col>
                 <Col>
                     <p>Check out this demo</p>
