@@ -2,6 +2,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import silasPic from '../Figures/silas.jpg';
+import ramaPic from '../Figures/rama.jpg';
 import mariaPic from '../Figures/maria.png';
 
 function WelcomeScreen() {
@@ -14,8 +15,11 @@ function WelcomeScreen() {
 		<div>
 			<h3>Ramapriya Ranganath</h3>
 			<div className="welcomeSection">
+				<img src={ramaPic} alt="Picture of Rama" className="welcomeImage"></img>
 				<p>
-				 We can may be add our pictures and small intro :)
+				I am Ramapriya master's student from UW Madison CS Department.
+				Before joining here, I was working in Microsoft Research India.
+				My areas of interest are ML, systems and HCI.
 				</p>
 			</div>
 		</div>

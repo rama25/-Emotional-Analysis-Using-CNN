@@ -117,6 +117,12 @@ table tr, td{
 	border-radius: 5%;
 }
 
+.emotionImage {
+	width: 500px;
+	margin: 0px 10px 10px 0px;
+	border-radius: 5%;
+}
+
 .welcomeSection {
 	display: flex;
 	padding: 5px;
@@ -132,5 +138,8 @@ table tr, td{
 	width: -webkit-fill-available;
     width: -moz-available;
 	width: stretch;
+}
+.cellFullWidth {
+  width: 100%;
 }
 
