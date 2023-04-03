@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
+import * as tf from "@tensorflow/tfjs";
 
 
 function StreamScreen() {
@@ -29,7 +30,7 @@ function StreamScreen() {
 					</Zoom>
                 </Col>
                 <Col>
-                    <p>Check out this demo</p>
+                    <p>Demo still in progress!</p>
                 </Col>
             </Row>
         </Container>
@@ -39,9 +40,8 @@ function StreamScreen() {
 
 function logic()
 {
-    // Remove once cv and tf are defined
     let cv = "";
-    let tf = "";
+    // Remove once cv is defined
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');

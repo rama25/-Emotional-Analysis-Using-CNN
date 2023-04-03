@@ -8,7 +8,7 @@ function ResultsScreen() {
         <Container className='myContainer' id='ResultsContainer'>
             <h1 className='orange'>Results</h1>
             <p>
-                Our results were great because...
+                Still in progress!
             </p>
         </Container>
 
