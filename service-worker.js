@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/-Emotional-Analysis-Using-CNN/precache-manifest.f26594a373cead42226e60653eaa35d5.js"
+  "/-Emotional-Analysis-Using-CNN/precache-manifest.3734f74e75fc0915c3c98bc890169cc2.js"
 );
 
 workbox.clientsClaim();
