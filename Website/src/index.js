@@ -12,6 +12,7 @@ import ProjectProposal from './components/ProjectProposal';
 import Navigator from './components/Navigator';
 import Col from 'react-bootstrap/Col';
 import { Container, Row } from 'react-bootstrap';
+import { OpenCvProvider } from 'opencv-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,7 +26,9 @@ root.render(
           <WelcomeScreen />
           <ProjectProposal/>
           <ImplementationScreen />
-          <StreamScreen />
+          <OpenCvProvider>
+            <StreamScreen />
+          </OpenCvProvider>
           <ResultsScreen />
         </Col>
       </Row>
