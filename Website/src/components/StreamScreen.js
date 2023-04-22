@@ -29,9 +29,12 @@ function StreamScreen() {
         {
             setButtonText("Enable Stream");
             setStatusText("Waiting");
-            streamObject.getTracks().forEach(function(track) {
-                track.stop();
-              });
+			if (streamObject && streamObject.getTracks)
+			{
+				streamObject.getTracks().forEach(function(track) {
+					track.stop();
+				  });
+			}
         }
     }
 
