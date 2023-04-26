@@ -6,6 +6,8 @@ import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import * as tf from "@tensorflow/tfjs";
 import { useOpenCv } from 'opencv-react';
+import modelData from '../model/model.json';
+import faceCascadeData from '../model/haarcascade_frontalface_default.xml';
 
 function StreamScreen() {
     const video = useRef(null);
@@ -14,7 +16,10 @@ function StreamScreen() {
     const [buttonText, setButtonText] = useState("Enable Stream");
     const [statusText, setStatusText] = useState("Waiting");
     const [streamObject, setStreamObject] = useState([]);
-    const { loaded, cv } = useOpenCv()
+    const { loaded, cv } = useOpenCv();
+	
+	const modelData = require("../model/model.json");
+	const faceCascadeData = require("../model/haarcascade_frontalface_default.xml");
 
     function enableStream() 
     {
@@ -38,7 +43,7 @@ function StreamScreen() {
         }
     }
 
-    function logic()
+    async function logic()
     {
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
@@ -58,8 +63,7 @@ function StreamScreen() {
         try
         {
             const faceCascade = new cv.CascadeClassifier();
-            const faceCascadeFile = 'haarcascade_frontalface_default.xml';
-            faceCascade.load(faceCascadeFile);
+            faceCascade.load(faceCascadeData);
 
             async function processVideo()
             {
@@ -80,10 +84,23 @@ function StreamScreen() {
                     height: video.width,
                     width: video.height
                 };
-                faceCascade.detectMultiScale(gray, faces, 1.1, 3, 0, minSize, maxSize);
+				try
+				{
+                	faceCascade.detectMultiScale(gray, faces, 1.1, 3, 0, minSize, maxSize);
+				}
+				catch(err)
+				{
+					console.log("An error occurred: " + err);
+				}
 
                 // Load the pre-trained model
-                const model = await tf.loadLayersModel('emotion_detection_model.h5');
+				const loaderHelper = {
+					load() 
+					{
+						return modelData;	
+					}
+				};
+                const model = await tf.loadLayersModel(loaderHelper);
 
                 // Extract features and classify emotions using the pre-trained model
                 for (let i = 0; i < faces.size(); ++i) {
@@ -116,9 +133,9 @@ function StreamScreen() {
             video.addEventListener('play', function() {
                 requestAnimationFrame(processVideo);
             });
-        }catch(error)
+        }catch(err)
         {
-
+			setStatusText("An error occurred: " + err);
         }
     }
 
