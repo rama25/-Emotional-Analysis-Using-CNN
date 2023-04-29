@@ -88,22 +88,7 @@ function StreamScreen() {
 				request.send();
 			};
 			
-            const faceCascade = new cv.CascadeClassifier();
-			
-			if(!xmlLoaded)
-			{
-				createFileFromUrl("haarcascade_frontalface_default.xml", faceCascadeData, () => {
-					let loadSuccess = faceCascade.load("haarcascade_frontalface_default.xml");
-					if (!loadSuccess)
-					{
-						console.log("Unable to load xml");
-						setStatusText("Unable to load xml");
-						setStream(false);
-						return;
-					}
-				});
-			}
-			else
+			function doLoadXml()
 			{
 				let loadSuccess = faceCascade.load("haarcascade_frontalface_default.xml");
 				if (!loadSuccess)
@@ -113,6 +98,19 @@ function StreamScreen() {
 					setStream(false);
 					return;
 				}
+			};
+			
+            const faceCascade = new cv.CascadeClassifier();
+			
+			if(!xmlLoaded)
+			{
+				createFileFromUrl("haarcascade_frontalface_default.xml", faceCascadeData, () => {
+					doLoadXml();
+				});
+			}
+			else
+			{
+				doLoadXml();
 			}
 			
 			
