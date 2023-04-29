@@ -1,21 +1,19 @@
 {
-  "main.css": "/-Emotional-Analysis-Using-CNN/static/css/main.21a02b65.chunk.css",
-  "main.js": "/-Emotional-Analysis-Using-CNN/static/js/main.9dab0185.chunk.js",
-  "main.js.map": "/-Emotional-Analysis-Using-CNN/static/js/main.9dab0185.chunk.js.map",
-  "runtime~main.js": "/-Emotional-Analysis-Using-CNN/static/js/runtime~main.aa231486.js",
-  "runtime~main.js.map": "/-Emotional-Analysis-Using-CNN/static/js/runtime~main.aa231486.js.map",
-  "static/css/2.ce295d7a.chunk.css": "/-Emotional-Analysis-Using-CNN/static/css/2.ce295d7a.chunk.css",
-  "static/js/2.b0ae0a15.chunk.js": "/-Emotional-Analysis-Using-CNN/static/js/2.b0ae0a15.chunk.js",
-  "static/js/2.b0ae0a15.chunk.js.map": "/-Emotional-Analysis-Using-CNN/static/js/2.b0ae0a15.chunk.js.map",
-  "index.html": "/-Emotional-Analysis-Using-CNN/index.html",
-  "precache-manifest.3734f74e75fc0915c3c98bc890169cc2.js": "/-Emotional-Analysis-Using-CNN/precache-manifest.3734f74e75fc0915c3c98bc890169cc2.js",
-  "service-worker.js": "/-Emotional-Analysis-Using-CNN/service-worker.js",
-  "static/css/2.ce295d7a.chunk.css.map": "/-Emotional-Analysis-Using-CNN/static/css/2.ce295d7a.chunk.css.map",
-  "static/css/main.21a02b65.chunk.css.map": "/-Emotional-Analysis-Using-CNN/static/css/main.21a02b65.chunk.css.map",
-  "static/media/Cycle.gif": "/-Emotional-Analysis-Using-CNN/static/media/Cycle.739e1ab3.gif",
-  "static/media/UW.png": "/-Emotional-Analysis-Using-CNN/static/media/UW.6269965e.png",
-  "static/media/cnn_3.png": "/-Emotional-Analysis-Using-CNN/static/media/cnn_3.46547ca0.png",
-  "static/media/maria.png": "/-Emotional-Analysis-Using-CNN/static/media/maria.1e4f5d7a.png",
-  "static/media/rama.jpg": "/-Emotional-Analysis-Using-CNN/static/media/rama.dcb81d6b.jpg",
-  "static/media/silas.jpg": "/-Emotional-Analysis-Using-CNN/static/media/silas.459b2998.jpg"
+  "files": {
+    "main.css": "/-Emotional-Analysis-Using-CNN/static/css/main.7b20ec92.css",
+    "main.js": "/-Emotional-Analysis-Using-CNN/static/js/main.289fbc78.js",
+    "static/media/haarcascade_frontalface_default.xml": "/-Emotional-Analysis-Using-CNN/static/media/haarcascade_frontalface_default.bf5207edb33deb842f58.xml",
+    "static/media/rama.jpg": "/-Emotional-Analysis-Using-CNN/static/media/rama.81c81de3afc94370a42e.jpg",
+    "static/media/cnn_3.png": "/-Emotional-Analysis-Using-CNN/static/media/cnn_3.089f95e44b71df6868cd.png",
+    "static/media/Cycle.gif": "/-Emotional-Analysis-Using-CNN/static/media/Cycle.330ac8dea4059b76ec25.gif",
+    "static/media/silas.jpg": "/-Emotional-Analysis-Using-CNN/static/media/silas.b39a79abbb3915bd73b8.jpg",
+    "static/media/UW.png": "/-Emotional-Analysis-Using-CNN/static/media/UW.ee357500440addd75db8.png",
+    "index.html": "/-Emotional-Analysis-Using-CNN/index.html",
+    "main.7b20ec92.css.map": "/-Emotional-Analysis-Using-CNN/static/css/main.7b20ec92.css.map",
+    "main.289fbc78.js.map": "/-Emotional-Analysis-Using-CNN/static/js/main.289fbc78.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b20ec92.css",
+    "static/js/main.289fbc78.js"
+  ]
 }
