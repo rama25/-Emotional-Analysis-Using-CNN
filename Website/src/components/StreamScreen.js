@@ -2,8 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
 import * as tf from "@tensorflow/tfjs";
 import { useOpenCv } from 'opencv-react';
 
@@ -11,6 +9,7 @@ function StreamScreen() {
     const video = useRef(null);
     const canvas = useRef(null);
     const [stream, setStream] = useState(true);
+    const [xmlLoaded, setXmlLoaded] = useState(false);
     const [disableStreamButton, setDisableStreamButton] = useState(true);
     const [buttonText, setButtonText] = useState("Enable Stream");
     const [statusText, setStatusText] = useState("Loading OpenCV");
@@ -79,6 +78,7 @@ function StreamScreen() {
 						if (request.status === 200) {
 							let data = new Uint8Array(request.response);
 							cv.FS_createDataFile('/', path, data, true, false, false);
+							setXmlLoaded(true);
 							callback();
 						} else {
 							console.printError('Failed to load ' + url + ' status: ' + request.status);
@@ -89,15 +89,33 @@ function StreamScreen() {
 			};
 			
             const faceCascade = new cv.CascadeClassifier();
-			createFileFromUrl("haarcascade_frontalface_default.xml", faceCascadeData, () => {
+			
+			if(!xmlLoaded)
+			{
+				createFileFromUrl("haarcascade_frontalface_default.xml", faceCascadeData, () => {
+					let loadSuccess = faceCascade.load("haarcascade_frontalface_default.xml");
+					if (!loadSuccess)
+					{
+						console.log("Unable to load xml");
+						setStatusText("Unable to load xml");
+						setStream(false);
+						return;
+					}
+				});
+			}
+			else
+			{
 				let loadSuccess = faceCascade.load("haarcascade_frontalface_default.xml");
 				if (!loadSuccess)
 				{
 					console.log("Unable to load xml");
 					setStatusText("Unable to load xml");
+					setStream(false);
 					return;
 				}
-			})
+			}
+			
+			
 			// Load the pre-trained model
 			const loaderHelper = {
 				load() 
@@ -111,7 +129,7 @@ function StreamScreen() {
 			let gray = new cv.Mat();
 			let faces = new cv.RectVector();
 
-            async function processVideo()
+            function processVideo()
             {
 				try
 				{
@@ -128,6 +146,7 @@ function StreamScreen() {
 						height: video.width,
 						width: video.height
 					};
+					
 					try
 					{
 						faceCascade.detectMultiScale(gray, faces, 1.1, 3, 0, minSize, maxSize);
@@ -136,6 +155,9 @@ function StreamScreen() {
 					{
 						let err = cv.exceptionFromPtr(ptr)
 						console.log("An error occurred: " + err.msg);
+						setStatusText("An error occurred: " + err.msg);
+						setStream(false);
+						return;
 					}
 	
 					// Extract features and classify emotions using the pre-trained model
@@ -166,6 +188,8 @@ function StreamScreen() {
 				catch(err)
 				{
 					console.log("An error occurred: " + err);
+					setStream(false);
+					return;
 				}
 				
 				if(stream)
@@ -181,6 +205,8 @@ function StreamScreen() {
         {
 			console.log("An error occurred: " + err);
 			setStatusText("An error occurred: " + err);
+			setStream(false);
+			return;
         }
 		
     };
@@ -188,25 +214,36 @@ function StreamScreen() {
     return (
         <Container className='myContainer' id='StreamContainer'>
             <h1 className='blue'>Stream</h1>
-            <Row>
-                <Col>
-					<Zoom>
-						<video className='borderClass' id="video" width="640" height="480" autoPlay
+			<p>
+				The below implementation runs natively in your browser. If you have a webcam, you can play with the model and see what emotions it detects.
+			</p>
+			<h4>Steps:</h4>
+			<ol>
+				<li>Request Webcam.</li>
+				<li>Extract image from webcam video.</li>
+				<li>Convert the image into gray scale.</li>
+				<li>Recognize faces in the scene and display a rectangle around the face.</li>
+				<li>For each identified face, extract the face and resize to 48x48.</li>
+				<li>Use the CNN classifier to predict the emotion expressed by the face in the frame.</li>
+				<li>Display the predicted emotion over the rectangle.</li>
+			</ol>
+			<p>Note that your video stream is not uploaded anywhere and is only used locally.</p>
+			
+            <div>
+                <div>
+					<video className='borderClass' id="video" width="640" height="480" autoPlay
                         ref={video}></video>
-					</Zoom>
-					<Zoom>
-						<canvas className='borderClass' id="canvas" width="640" height="480"
+					<canvas className='borderClass' id="canvas" width="640" height="480"
                         ref={canvas}></canvas>
-					</Zoom>
-                </Col>
-                <Col>
+                </div>
+                <div>
                     <input type="button" id="enableButton" onClick={enableStream} value={buttonText} disabled={disableStreamButton}></input>
-                    <p>Demo still in progress!</p>
-                    <p>Status:</p>
+                    <p>Demo is still a work in progress!</p>
+                    <h4>Status:</h4>
                     <p>{statusText}</p>
-					<div id="openCVErr"></div>
-                </Col>
-            </Row>
+					<p>We are working to integrate OpenCV and TensorFlow into this webpage to let you run the model in your browser.</p>
+                </div>
+            </div>
         </Container>
 
     );
