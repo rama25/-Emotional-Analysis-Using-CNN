@@ -68,8 +68,36 @@ function StreamScreen() {
 
         try
         {
+			
+		
+			function createFileFromUrl(path, url, callback) {
+				let request = new XMLHttpRequest();
+				request.open('GET', url, true);
+				request.responseType = 'arraybuffer';
+				request.onload = function(ev) {
+					if (request.readyState === 4) {
+						if (request.status === 200) {
+							let data = new Uint8Array(request.response);
+							cv.FS_createDataFile('/', path, data, true, false, false);
+							callback();
+						} else {
+							console.printError('Failed to load ' + url + ' status: ' + request.status);
+						}
+					}
+				};
+				request.send();
+			};
+			
             const faceCascade = new cv.CascadeClassifier();
-            faceCascade.load(faceCascadeData);
+			createFileFromUrl("haarcascade_frontalface_default.xml", faceCascadeData, () => {
+				let loadSuccess = faceCascade.load("haarcascade_frontalface_default.xml");
+				if (!loadSuccess)
+				{
+					console.log("Unable to load xml");
+					setStatusText("Unable to load xml");
+					return;
+				}
+			})
 			// Load the pre-trained model
 			const loaderHelper = {
 				load() 
@@ -78,15 +106,15 @@ function StreamScreen() {
 				}
 			};
 			const model = await tf.loadLayersModel(loaderHelper);
+			
+			let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
+			let gray = new cv.Mat();
+			let faces = new cv.RectVector();
 
             async function processVideo()
             {
 				try
 				{
-					let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
-					let gray = new cv.Mat();
-					let faces = new cv.RectVector();
-	
 					context.drawImage(video, 0, 0, canvas.width, canvas.height);
 					let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 					src.data.set(imageData.data);
@@ -104,9 +132,10 @@ function StreamScreen() {
 					{
 						faceCascade.detectMultiScale(gray, faces, 1.1, 3, 0, minSize, maxSize);
 					}
-					catch(err)
+					catch(ptr)
 					{
-						console.log("An error occurred: " + err);
+						let err = cv.exceptionFromPtr(ptr)
+						console.log("An error occurred: " + err.msg);
 					}
 	
 					// Extract features and classify emotions using the pre-trained model
@@ -138,8 +167,11 @@ function StreamScreen() {
 				{
 					console.log("An error occurred: " + err);
 				}
-
-                requestAnimationFrame(processVideo);
+				
+				if(stream)
+				{
+					requestAnimationFrame(processVideo);
+				}
             }
 
             video.addEventListener('play', function() {
@@ -150,7 +182,8 @@ function StreamScreen() {
 			console.log("An error occurred: " + err);
 			setStatusText("An error occurred: " + err);
         }
-    }
+		
+    };
 
     return (
         <Container className='myContainer' id='StreamContainer'>
@@ -171,11 +204,13 @@ function StreamScreen() {
                     <p>Demo still in progress!</p>
                     <p>Status:</p>
                     <p>{statusText}</p>
+					<div id="openCVErr"></div>
                 </Col>
             </Row>
         </Container>
 
     );
+	
 }
 
 export default StreamScreen;
