@@ -145,7 +145,7 @@ function StreamScreen() {
 					let imageData = outContext.getImageData(0, 0, outputCanvas.width, outputCanvas.height);
 					src.data.set(imageData.data);
 	
-					cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
+					cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 1);
 					var minSize = {
 						height: 0,
 						width: 0
@@ -175,9 +175,8 @@ function StreamScreen() {
 						cv.resize(faceImg, faceImg, new cv.Size(48, 48));
 						tf.tidy(() => {
 							outContext.drawImage(faceCanvas, faceImg.x, faceImg.y, faceImg.width, faceImg.height, 0, 0, faceCanvas.width, faceCanvas.height);
-							const roiTensor = tf.browser.fromPixels(faceCanvas, 1).toFloat();
-							const resizedTensor = tf.image.resizeBilinear(roiTensor, [48, 48]).reshape([1, 48, 48, 1]);
-							const prediction = model.predict(resizedTensor);
+							const roiTensor = tf.browser.fromPixels(faceCanvas, 1).expandDims(0);
+							const prediction = model.predict(roiTensor);
 							
 							let emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral'];
 							let predictionData = prediction.dataSync();
