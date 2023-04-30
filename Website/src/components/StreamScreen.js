@@ -7,7 +7,8 @@ import { useOpenCv } from 'opencv-react';
 
 function StreamScreen() {
     const video = useRef(null);
-    const canvas = useRef(null);
+    const outputCanvas = useRef(null);
+    const faceCanvas = useRef(null);
     const [stream, setStream] = useState(true);
     const [xmlLoaded, setXmlLoaded] = useState(false);
     const [disableStreamButton, setDisableStreamButton] = useState(true);
@@ -45,14 +46,18 @@ function StreamScreen() {
 					track.stop();
 				  });
 			}
+			const video = document.getElementById('video');
+			video.pause();
         }
     }
 
     async function logic()
     {
         const video = document.getElementById('video');
-        const canvas = document.getElementById('canvas');
-        const context = canvas.getContext('2d');
+        const outputCanvas = document.getElementById('outputCanvas');
+        const faceCanvas = document.getElementById('faceCanvas');
+        const outContext = outputCanvas.getContext('2d', { willReadFrequently: true });
+        const faceContext = faceCanvas.getContext('2d', { willReadFrequently: true });
 
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(function (streamO) {
@@ -67,7 +72,6 @@ function StreamScreen() {
 
         try
         {
-			
 		
 			function createFileFromUrl(path, url, callback) {
 				let request = new XMLHttpRequest();
@@ -122,17 +126,22 @@ function StreamScreen() {
 				}
 			};
 			const model = await tf.loadLayersModel(loaderHelper);
-			
-			let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
-			let gray = new cv.Mat();
-			let faces = new cv.RectVector();
 
             function processVideo()
             {
+				if (video.paused || video.ended) 
+				{
+					return;
+				}
+			
+				let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
+				let gray = new cv.Mat();
+				let faces = new cv.RectVector();
+				
 				try
 				{
-					context.drawImage(video, 0, 0, canvas.width, canvas.height);
-					let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+					outContext.drawImage(video, 0, 0, outputCanvas.width, outputCanvas.height);
+					let imageData = outContext.getImageData(0, 0, outputCanvas.width, outputCanvas.height);
 					src.data.set(imageData.data);
 	
 					cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
@@ -164,10 +173,11 @@ function StreamScreen() {
 						let faceImg = gray.roi(face);
 						cv.resize(faceImg, faceImg, new cv.Size(48, 48));
 						tf.tidy(() => {
-							context.drawImage(canvas, face.x, face.y, face.width, face.height, 0, 0, canvas.width, canvas.height);
-							const roiTensor = tf.browser.fromPixels(canvas, 1).toFloat();
+							outContext.drawImage(faceCanvas, faceImg.x, faceImg.y, faceImg.width, faceImg.height, 0, 0, faceCanvas.width, faceCanvas.height);
+							const roiTensor = tf.browser.fromPixels(faceCanvas, 1).toFloat();
 							const resizedTensor = tf.image.resizeBilinear(roiTensor, [48, 48]).reshape([1, 48, 48, 1]);
 							const prediction = model.predict(resizedTensor);
+							
 							let emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral'];
 							let predictionData = prediction.dataSync();
 							let maxIndex = 0;
@@ -178,9 +188,17 @@ function StreamScreen() {
 							}
 							let emotion = emotions[maxIndex];
 							let textSize = Math.max(face.width / 10, 16);
-							context.font = textSize + "px Arial";
-							context.fillStyle = "red";
-							context.fillText(emotion, face.x + 0.5 * (face.width - textSize * emotion.length), face.y - 5);
+							outContext.font = textSize + "px Arial";
+							outContext.fillStyle = "red";
+							outContext.fillText(emotion, face.x + 0.5 * (face.width - textSize * emotion.length), face.y - 5);
+							
+							outContext.beginPath();
+							outContext.lineWidth = "3";
+							outContext.strokeStyle = "red";
+							outContext.rect(face.x, face.y, face.width, face.height);
+							outContext.stroke();
+							
+							faceContext.drawImage(faceCanvas, faceImg.x, faceImg.y, faceImg.width, faceImg.height, 0, 0, faceCanvas.width, faceCanvas.height);
 						});
 						faceImg.delete();
 					}
@@ -233,8 +251,10 @@ function StreamScreen() {
                 <div>
 					<video className='borderClass' id="video" width="640" height="480" autoPlay
                         ref={video}></video>
-					<canvas className='borderClass' id="canvas" width="640" height="480"
-                        ref={canvas}></canvas>
+					<canvas className='borderClass' id="outputCanvas" width="640" height="480"
+                        ref={outputCanvas}></canvas>
+					<canvas className='nodisp' id="faceCanvas" width="48" height="48"
+                        ref={faceCanvas}></canvas>
                 </div>
                 <div>
                     <input type="button" id="enableButton" onClick={enableStream} value={buttonText} disabled={disableStreamButton}></input>

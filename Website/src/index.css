@@ -49,6 +49,10 @@ ol {
 	text-align: left;
 }
 
+.nodisp {
+	display: none;	
+}
+
 .rightAlign {
 	text-align: right;
 }
