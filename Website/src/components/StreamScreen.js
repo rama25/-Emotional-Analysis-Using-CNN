@@ -131,6 +131,7 @@ function StreamScreen() {
             {
 				if (video.paused || video.ended) 
 				{
+					video.removeEventListener('play', reqAnimFram);
 					return;
 				}
 			
@@ -210,15 +211,15 @@ function StreamScreen() {
 					return;
 				}
 				
-				if(stream)
-				{
-					requestAnimationFrame(processVideo);
-				}
+				requestAnimationFrame(processVideo);
             }
+			
+			function reqAnimFram()
+			{
+				requestAnimationFrame(processVideo);
+			};
 
-            video.addEventListener('play', function() {
-                requestAnimationFrame(processVideo);
-            });
+            video.addEventListener('play', reqAnimFram);
         }catch(err)
         {
 			console.log("An error occurred: " + err);
