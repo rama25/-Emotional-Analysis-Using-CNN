@@ -164,8 +164,10 @@ function StreamScreen() {
 						let faceImg = gray.roi(face);
 						cv.resize(faceImg, faceImg, new cv.Size(48, 48));
 						tf.tidy(() => {
-							let tensor = tf.browser.fromPixels(faceImg).mean(2).toFloat().div(255.0).expandDims(0);
-							let prediction = model.predict(tensor);
+							context.drawImage(canvas, face.x, face.y, face.width, face.height, 0, 0, canvas.width, canvas.height);
+							const roiTensor = tf.browser.fromPixels(canvas, 1).toFloat();
+							const resizedTensor = tf.image.resizeBilinear(roiTensor, [48, 48]).reshape([1, 48, 48, 1]);
+							const prediction = model.predict(resizedTensor);
 							let emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral'];
 							let predictionData = prediction.dataSync();
 							let maxIndex = 0;
@@ -213,7 +215,7 @@ function StreamScreen() {
         <Container className='myContainer' id='StreamContainer'>
             <h1 className='blue'>Stream</h1>
 			<p>
-				The below implementation runs natively in your browser. If you have a webcam, you can play with the model and see what emotions it detects.
+				The below implementation runs locally in your browser. If you have a webcam, you can play with the model and see what emotions it detects.
 			</p>
 			<h4>Steps:</h4>
 			<ol>
