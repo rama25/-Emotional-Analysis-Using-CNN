@@ -145,7 +145,7 @@ function StreamScreen() {
 					let imageData = outContext.getImageData(0, 0, outputCanvas.width, outputCanvas.height);
 					src.data.set(imageData.data);
 	
-					cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 1);
+					cv.cvtColor(src, gray, cv.COLOR_BGR2GRAY, 1);
 					var minSize = {
 						height: 0,
 						width: 0
@@ -169,16 +169,17 @@ function StreamScreen() {
 					}
 	
 					// Extract features and classify emotions using the pre-trained model
-					for (let i = 0; i < faces.size(); ++i) {
+					for (let i = 0; i < faces.size(); ++i) 
+					{
 						let face = faces.get(i);
 						let faceImg = gray.roi(face);
 						cv.resize(faceImg, faceImg, new cv.Size(48, 48));
 						tf.tidy(() => {
-							outContext.drawImage(faceCanvas, faceImg.x, faceImg.y, faceImg.width, faceImg.height, 0, 0, faceCanvas.width, faceCanvas.height);
+							faceContext.drawImage(video, face.x, face.y, face.width, face.height, 0, 0, faceCanvas.width, faceCanvas.height);
 							const roiTensor = tf.browser.fromPixels(faceCanvas, 1).expandDims(0);
 							const prediction = model.predict(roiTensor);
 							
-							let emotions = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral'];
+							let emotions = ['Angry','Disgust','Fear','Happy','Neutral', 'Sad', 'Surprise'];
 							let predictionData = prediction.dataSync();
 							let maxIndex = 0;
 							for (let j = 1; j < predictionData.length; ++j) {
@@ -198,7 +199,7 @@ function StreamScreen() {
 							outContext.rect(face.x, face.y, face.width, face.height);
 							outContext.stroke();
 							
-							faceContext.drawImage(faceCanvas, faceImg.x, faceImg.y, faceImg.width, faceImg.height, 0, 0, faceCanvas.width, faceCanvas.height);
+							//faceContext.drawImage(faceCanvas, faceImg.x, faceImg.y, faceImg.width, faceImg.height, 0, 0, faceCanvas.width, faceCanvas.height);
 						});
 						faceImg.delete();
 					}
@@ -253,7 +254,7 @@ function StreamScreen() {
                         ref={video}></video>
 					<canvas className='borderClass' id="outputCanvas" width="640" height="480"
                         ref={outputCanvas}></canvas>
-					<canvas className='nodisp' id="faceCanvas" width="48" height="48"
+					<canvas className='borderClass' id="faceCanvas" width="48" height="48"
                         ref={faceCanvas}></canvas>
                 </div>
                 <div>
