@@ -199,6 +199,8 @@ function ProjectProposal() {
 		
 		<li id = "Hassouneh_2020">Hassouneh, A., Mutawa, A. M., &amp; Murugappan, M. (2020). Development of a real-time emotion recognition system using facial expressions and EEG based on machine learning and deep neural network methods. Retrieved in March 2023 from: <a href = "https://doi.org/10.1016/j.imu.2020.100372"> https://doi.org/10.1016/j.imu.2020.100372</a></li>
 		
+		<li id = "Goodfellow_2015">Goodfellow, I. J., Erhan, D., Luc Carrier, P., Courville, A, et al. (2015). Challenges in representation learning: A report on three machine learning contests. Neural Networks, 64, 59–63 Retrieved in March 2023 from: <a href = "https://doi.org/10.1016/j.neunet.2014.09.005"> https://doi.org/10.1016/j.neunet.2014.09.005</a></li>
+		
 		</ul>
 	</Container>
 
