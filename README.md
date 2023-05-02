@@ -1,21 +1,8 @@
 # Emotion_Detection_CNN
 
-## Node.js 18 is required 
-https://nodejs.org/en/download/
+In this project, we have selected patients with Central Nervous System (CNS) Breakdown as our target audience and helped them to alter their dosage on time 
 
-## npm 8 is required to run
-https://www.npmjs.com/package/npm/v/8.5.0
+Emotions can be expressed in many different ways across different cultures, languages, and contexts. Here we have used FER 2013 from Kaggle
+We would like to change Classification Problem  -> Regression Problem using Body Sensors
 
-Once you have both installed, navigate to the ../Website folder and open a command line window there.
-
-Run 
-```
-npm install
-```
-to set up the necessary React structures
-
-Run
-```
-npm start
-```
-to start the web server. This will launch the website in a browser and will allow any machine on your LAN to connect to it.
+ Goodfellow, Ian J "Challenges in representation learning: A report on three machine learning contests" International conference on Neural Information Processing Berlin 2013
