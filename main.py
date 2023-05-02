@@ -1,9 +1,10 @@
 from keras.models import load_model
 from time import sleep
+import numpy as np
 from tensorflow.keras.utils import img_to_array
 from keras.preprocessing import image
 import cv2
-import numpy as np
+
 
 face_classifier = cv2.CascadeClassifier(r'C:\Users\ramap\Desktop\python\Emotion_Detection_CNN\haarcascade_frontalface_default.xml')
 classifier =load_model(r'C:\Users\ramap\Desktop\python\Emotion_Detection_CNN\model.h5')
