@@ -1,9 +1,0 @@
-{
-  "name": "-Emotional-Analysis-Using-CNN",
-  "lockfileVersion": 3,
-  "requires": true,
-  "packages": {},
-  "dependencies": {
-    "fs": "^0.0.1-security"
-  }
-}
