@@ -4,9 +4,24 @@ import argparse
 import dlib
 import cv2
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-vw", "--isVideoWriter", type=bool, default=False)
-args = vars(ap.parse_args())
+argpar = argparse.ArgumentParser()
+argpar.add_argument("-vw", "--isVideoWriter", type=bool, default=False)
+args = vars(argpar.parse_args())
+
+def shapedraw(shape):
+    coords = np.zeros((68, 2), dtype="int")
+    for i in range(0, 68):
+        coords[i] = (shape.part(i).x, shape.part(i).y)
+    return coords
+
+
+def drawRect(rect):
+    x = rect.left()
+    y = rect.top()
+    w = rect.right() - x
+    h = rect.bottom() - y
+    return (x, y, w, h)
+
 
 emotion_offsets = (20, 40)
 emotions = {
@@ -41,28 +56,15 @@ emotions = {
 }
 
 
-def shapePoints(shape):
-    coords = np.zeros((68, 2), dtype="int")
-    for i in range(0, 68):
-        coords[i] = (shape.part(i).x, shape.part(i).y)
-    return coords
-
-
-def rectPoints(rect):
-    x = rect.left()
-    y = rect.top()
-    w = rect.right() - x
-    h = rect.bottom() - y
-    return (x, y, w, h)
 
 
 faceLandmarks = "predictor.dat"
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(faceLandmarks)
 
-emotionModelPath = 'final_model.hdf5' 
-emotionClassifier = load_model(emotionModelPath, compile=False)
-emotionTargetSize = emotionClassifier.input_shape[1:3]
+emPath = 'final_model.hdf5' 
+eClassifier = load_model(emPath, compile=False)
+eSize = eClassifier.input_shape[1:3]
 
 cap = cv2.VideoCapture(0)
 
@@ -84,11 +86,11 @@ while True:
     rects = detector(grayFrame, 0)
     for rect in rects:
         shape = predictor(grayFrame, rect)
-        points = shapePoints(shape)
-        (x, y, w, h) = rectPoints(rect)
+        points = shapedraw(shape)
+        (x, y, w, h) = drawRect(rect)
         grayFace = grayFrame[y:y + h, x:x + w]
         try:
-            grayFace = cv2.resize(grayFace, (emotionTargetSize))
+            grayFace = cv2.resize(grayFace, (eSize))
         except:
             continue
 
@@ -97,7 +99,7 @@ while True:
         grayFace = (grayFace - 0.5) * 2.0
         grayFace = np.expand_dims(grayFace, 0)
         grayFace = np.expand_dims(grayFace, -1)
-        emotion_prediction = emotionClassifier.predict(grayFace)
+        emotion_prediction = eClassifier.predict(grayFace)
         emotion_probability = np.max(emotion_prediction)
         if (emotion_probability > 0.36):
             emotion_label_arg = np.argmax(emotion_prediction)
