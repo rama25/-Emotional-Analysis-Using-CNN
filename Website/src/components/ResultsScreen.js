@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import cyclePic from '../Figures/Emotions/Cycle.gif';
+import cyclePic from '../Figures/Emotions/video.mp4';
 
 function ResultsScreen() {
 
