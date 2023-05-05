@@ -23,7 +23,7 @@ function ProjectProposal() {
 			<li>Security and surveillance: Emotional analysis using OpenCV can also be useful in security and surveillance applications. 
 				By detecting suspicious behavior and emotions, security personnel can take appropriate action to prevent potential threats.</li>
 		</ul>
-		<p>In our project we have selected Security and Surveillance field</p>
+		<p>In our project we have selected to help people with CNS breakdown</p>
 		<p>
 			Emotion recognition systems identify features in verbal and non-verbal communication to identify and quantify the emotions expressed (<a className = 'cite' href = "#fragopanagos_2005">Fragopanagos & Taylor, 2005</a>; <a className = 'cite' href = "#zhao_2020">Zhao et al., 2020</a>). 
 			Data on users' emotional reactions when interacting with online applications is valuable for a wide range of fields education, healthcare, customer service, 
