@@ -1,0 +1,161 @@
+html {
+  margin: 1rem;
+  align-items: center;
+  text-align: center;
+  background-color: #D3F4FF;
+}
+
+#root {
+  background-color: #D3F4FF;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+p {
+  text-align: left;
+}
+
+h2 {
+	text-align: left;
+	border-bottom: solid;
+	border-bottom-width: 2px
+}
+
+h3 {
+	text-align: left;
+}
+
+h4 {
+	text-align: left;
+}
+
+ul {
+	text-align: left;
+}
+
+ol {
+	text-align: left;
+}
+
+.nodisp {
+	display: none;	
+}
+
+.rightAlign {
+	text-align: right;
+}
+
+.pink {
+	background-color: #DD00FF;
+}
+
+.green {
+	background-color: #007F46;
+}
+
+.blue {
+	background-color: #0026FF;
+}
+
+.purple {
+	background-color: #4800FF;
+}
+
+.orange {
+	background-color: #C14D00;
+}
+
+h1 {
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+		color: white;
+		padding-bottom: 5px;
+		border-color: black;
+		border-style: solid;
+		border-width: 0px 1px 1px 1px;
+  }
+  
+th {
+	min-width: 100px;	
+}
+
+.myContainer {
+  background-color: white;
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px gray;
+}
+
+.navigatorContainer {
+  padding: 10px;
+  text-align: left;
+  position: sticky;
+  top: 20px;
+}
+
+.borderClass {
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.cite {
+  color: gray;
+}
+
+.center_table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table tr, td{
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-color: black;
+  padding-right: 15px;
+}
+
+.welcomeImage {
+	width: 200px;
+	margin: 0px 10px 10px 0px;
+	border-radius: 5%;
+}
+
+.emotionImage {
+	width: 500px;
+	margin: 0px 10px 10px 0px;
+	border-radius: 5%;
+}
+
+.welcomeSection {
+	display: flex;
+	padding: 5px;
+}
+
+.imageCaption {
+	text-align: center;
+	font-style: italic;
+}
+
+.navImage {
+	width: 100%;
+	width: -webkit-fill-available;
+    width: -moz-available;
+	width: stretch;
+}
+.cellFullWidth {
+  width: 100%;
+}
+
