@@ -18,7 +18,7 @@ function StreamScreen() {
     const { loaded, cv } = useOpenCv();
 	
 	const modelData = require("../model/model.json");
-	const faceCascadeData = require("../model/haarcascade_frontalface_default.xml");
+	const faceCascadeData = require("../model/default.xml");
 	
 	useEffect(() => {
 		if (loaded) {
@@ -94,7 +94,7 @@ function StreamScreen() {
 			
 			function doLoadXml()
 			{
-				let loadSuccess = faceCascade.load("haarcascade_frontalface_default.xml");
+				let loadSuccess = faceCascade.load("default.xml");
 				if (!loadSuccess)
 				{
 					console.log("Unable to load xml");
@@ -108,7 +108,7 @@ function StreamScreen() {
 			
 			if(!xmlLoaded)
 			{
-				createFileFromUrl("haarcascade_frontalface_default.xml", faceCascadeData, () => {
+				createFileFromUrl("default.xml", faceCascadeData, () => {
 					doLoadXml();
 				});
 			}

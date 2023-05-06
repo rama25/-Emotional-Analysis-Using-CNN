@@ -52,16 +52,8 @@ function ProjectProposal() {
 		
 		<h2>Motivation and Approach</h2>
 		<p>
-			Emotional analysis involves detecting and analyzing human emotions from visual cues such as facial expressions, body language, and voice tone. 
-			In the context of crime detection, it can be used to identify individuals who may be involved in a crime, either as perpetrators or witnesses. 
-			Security cameras can be equipped with facial recognition and emotional analysis capabilities to detect and track individuals who exhibit suspicious emotions, 
-			such as fear, anger, or anxiety. These emotions may be indicative of criminal or terrorist activity, and detecting them early can allow security personnel to 
-			respond quickly and prevent potential threats.  Additionally, emotional analysis can also be used to detect and prevent insider threats, such as employees who 
-			may be planning to steal or leak sensitive information. By monitoring the emotions of employees, such as stress or anxiety, security personnel can identify 
-			individuals who may be experiencing personal or professional issues that could lead to security breaches. Emotional analysis using OpenCV in the security 
-			and surveillance field can provide an additional layer of security and help prevent potential threats. However, it is important to note that emotional 
-			analysis should not be the sole basis for making security decisions and should be used in conjunction with other security measures, such as physical 
-			security and access control. We do have the support from Skokie Police Department who want this to be implemented on a large scale.
+			
+		Facial emotional analysis can be a powerful tool for improving the mental health and wellbeing of individuals with CNS breakdown. By analyzing facial expressions, it is possible to identify emotional states such as sadness, anger, and anxiety, which can help healthcare providers to tailor treatment plans and interventions to the specific needs of each individual. MobileNetV2 is a lightweight and efficient architecture that can be used for facial emotional analysis on mobile and embedded devices, making it an ideal choice for real-time emotion detection in clinical settings.Emotional analysis involves detecting and analyzing human emotions from visual cues such as facial expressions, body language, and voice tone.
 		</p>
 		<p>
 			Emotional analysis can help identify such individuals and provide valuable clues to law enforcement officials. 
@@ -70,12 +62,7 @@ function ProjectProposal() {
 		<p>
 			Because this project is presented in a web format, we were motivated to focus on emotion analysis for online applications. 
 			Our goal is that instructors and anyone that visits our website can interact with our project. Our objective is to develop a 
-			program that identifies emotion in real-time video captured through a webcam. We are using an open-source data set to train a deep learning model.  
-			The model uses a cascaded classifier to detect faces in the video frames. The grayscale face region is then passed through the trained model,
-			which classifies facial expressions as anger, disgust, fear, happiness, sadness, surprise, or neutral. This is an already existing framework for 
-			emotion recognition which allows us to compare the performance and accuracy of our implementation with previous work. We also consider the application 
-			of real-time emotion recognition for crime prevention. Emotional analysis can be used as a part of crime detection to help identify potential suspects 
-			or witnesses who may be experiencing a heightened emotional state. 
+			program that identifies emotion in real-time video captured through a webcam. We are using an open-source data set to train a deep learning model. The model uses a cascaded classifier to detect faces in the video frames. The grayscale face region is then passed through the trained model,which classifies facial expressions as anger, disgust, fear, happiness, sadness, surprise, or neutral. This is an already existing framework for emotion recognition which allows us to compare the performance and accuracy of our implementation with previous work. We also consider the application of real-time emotion recognition for crime prevention. 
 		</p>
 		
 		<h2>Milestones</h2>
